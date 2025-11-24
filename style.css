@@ -39,13 +39,6 @@
     margin-bottom: 1em;
 }
 
-.botaoQuadrante{
-    font-weight: 500;
-    border-radius: 1000px;
-    border: none;
-    padding: .25em;
-}
-
 .listaQuadrante{
     list-style: none;
     display: flex;
@@ -59,7 +52,8 @@
     padding: 1em 1em;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 2em;
 }
 
 .questionario div{
