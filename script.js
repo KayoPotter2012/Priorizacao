@@ -1,5 +1,3 @@
-let botaoQuestionario = document.getElementById('botaoQuestionario')
-
 let quadranteSelect = document.getElementById('quadranteSelect')
 let novoItem = document.getElementById('item')
 
@@ -41,49 +39,98 @@ lista.forEach(atividade => {
 
 localStorage.clear()
 
-botaoQuestionario.addEventListener('click', () => {
-    let atividade = {
-        nome: novoItem.value,
-        quadrante: quadranteSelect.value
-    }
-
-    lista.push(atividade)
-
-    if (novoItem.value == '') {
-        alert('Coloque um nome')
-
-    } else {
-        let item = document.createElement('li')
-        item.classList.add('item')
-
-        let texto = document.createElement('p')
-        texto.innerHTML = atividade.nome
-        item.appendChild(texto)
-
-        let quadrante
-
-        if (atividade.quadrante == 1){
-            quadrante = quadrante1
-        } else if (atividade.quadrante == 2) {
-            quadrante = quadrante2
-        } else if (atividade.quadrante == 3) {
-            quadrante = quadrante3
-        } else if (atividade.quadrante == 4){
-            quadrante = quadrante4
+novoItem.addEventListener('keypress', async (event) => {
+    if (event.key == 'Enter'){
+        let atividade = {
+            nome: novoItem.value,
+            quadrante: quadranteSelect.value
         }
 
-        quadrante.appendChild(item)
+        lista.push(atividade)
 
-        let image = document.createElement('img')
-        item.appendChild(image)
-        image.src = "./img/close-svgrepo-com.svg"
-        image.classList.add('removeItem')
+        if (novoItem.value == '') {
+            alert('Coloque um nome')
+
+        } else {
+            let item = document.createElement('li')
+            item.classList.add('item')
+
+            let texto = document.createElement('p')
+            texto.innerHTML = atividade.nome
+            item.appendChild(texto)
+
+            let quadrante
+
+            if (atividade.quadrante == 1){
+                quadrante = quadrante1
+            } else if (atividade.quadrante == 2) {
+                quadrante = quadrante2
+            } else if (atividade.quadrante == 3) {
+                quadrante = quadrante3
+            } else if (atividade.quadrante == 4){
+                quadrante = quadrante4
+            }
+
+            quadrante.appendChild(item)
+
+            let image = document.createElement('img')
+            item.appendChild(image)
+            image.src = "./img/close-svgrepo-com.svg"
+            image.classList.add('removeItem')
+        }
+
+        novoItem.value = ''
+
+        localStorage.clear()
+        localStorage.setItem("listaChave", JSON.stringify(lista));
     }
+})
 
-    novoItem.value = ''
+quadranteSelect.addEventListener('keypress', async (event) => {
+    if (event.key == 'Enter'){
+        let atividade = {
+            nome: novoItem.value,
+            quadrante: quadranteSelect.value
+        }
 
-    localStorage.clear()
-    localStorage.setItem("listaChave", JSON.stringify(lista));
+        lista.push(atividade)
+
+        if (novoItem.value == '') {
+            alert('Coloque um nome')
+
+        } else {
+            let item = document.createElement('li')
+            item.classList.add('item')
+
+            let texto = document.createElement('p')
+            texto.innerHTML = atividade.nome
+            item.appendChild(texto)
+
+            let quadrante
+
+            if (atividade.quadrante == 1){
+                quadrante = quadrante1
+            } else if (atividade.quadrante == 2) {
+                quadrante = quadrante2
+            } else if (atividade.quadrante == 3) {
+                quadrante = quadrante3
+            } else if (atividade.quadrante == 4){
+                quadrante = quadrante4
+            }
+
+            quadrante.appendChild(item)
+
+            let image = document.createElement('img')
+            item.appendChild(image)
+            image.src = "./img/close-svgrepo-com.svg"
+            image.classList.add('removeItem')
+        }
+
+        novoItem.value = ''
+
+        localStorage.clear()
+        localStorage.setItem("listaChave", JSON.stringify(lista));
+    }
 })
 
 quadrante1.addEventListener('click', (event) => {
