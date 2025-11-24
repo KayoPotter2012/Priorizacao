@@ -21,7 +21,7 @@
 
 .quadrante{
     width: 25em;
-    height: 15em;
+    min-height: 15em;
     padding: 1em;
     margin: .5em;
     background-color: lightgrey;
